@@ -2,9 +2,9 @@ module "eks" {
   # eks 모듈에서 사용할 변수 정의
   source = "./modules/eks-cluster"
   cluster_name = "jykim-cluster"
-  cluster_version = "1.24"
-  vpc_id = "vpc-0624676a2f96b20c0"
+  cluster_version = "1.28"
+  vpc_id = "vpc-00da4c5f837bcb557"
 
-  private_subnets = ["subnet-0220d81c779718c0c", "subnet-05761b019090b97a9"]
-  public_subnets  = ["subnet-055730a1eef28f4cf", "subnet-08a76f98b880aee75"]
+  private_subnets = ["subnet-0de6cfacf5bf294c0", "subnet-00cfad50219c647e5"]
+  public_subnets  = ["subnet-09c355ef67ee5d779", "subnet-03549a56b8aac6a86"]
 }

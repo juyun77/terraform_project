@@ -25,7 +25,7 @@ variable "vpc_id" {
 variable "private_subnets" {
   description = "Your private subnets for EKS worker node"
   type = list
-  default = ["subnet-040727c7585f853a4", "subnet-0220d81c779718c0c"]
+  default = ["subnet-0de6cfacf5bf294c0", "subnet-00cfad50219c647e5"]
 }
 
 variable "account_number" {
