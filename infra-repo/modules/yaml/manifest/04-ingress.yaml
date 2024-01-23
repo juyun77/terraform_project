@@ -1,0 +1,48 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: juyun
+  name: juyun
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/load-balancer-name: juyun-alb
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/subnets: subnet-055730a1eef28f4cf, subnet-08a76f98b880aee75  # 퍼블릭 서브넷
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:194453983284:certificate/3497f02e-c348-4ee3-a598-1fd20b239e1b
+spec:
+  rules:
+    - host: api.1jo10000jo.link
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            backend:
+              service:
+                name: backend-port-8080
+                port:
+                  number: 8080
+    - host: bbb.1jo10000jo.link
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            backend:
+              service:
+                name: frontend-port-80
+                port:
+                  number: 80
+    - http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: frontend-port-80
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - 1jo10000jo.link
+      secretName: tls-secret
+

@@ -1,0 +1,53 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: efs-claim
+  namespace: stage
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: aws-efs-sc
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-efs
+  namespace: stage
+spec:
+  selector:
+    matchLabels:
+      app: nginx-efs
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx-efs
+    spec:
+      containers:
+      - name: nginx-efs
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 128m
+            memory: 64Mi
+          limits:
+            cpu: 256m
+            memory: 128Mi
+        volumeMounts:
+          - name: fast-efs
+            mountPath: /opt/efs_data
+      volumes:
+        - name: fast-efs
+          persistentVolumeClaim:
+            claimName: efs-claim
+      tolerations:  # tolerations를 추가합니다.
+      - key: "management"  # 용인할 테인트의 키를 지정합니다.
+        operator: "Equal"  # 테인트의 키와 값이 정확히 일치해야 함을 나타냅니다.
+        value: "true"  # 용인할 테인트의 값을 지정합니다.
+        effect: "NoSchedule"  # NoSchedule 효과를 용인함을 나타냅니다.

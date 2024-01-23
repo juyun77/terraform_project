@@ -1,0 +1,87 @@
+# Default values for game2048.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+appName: "game2048"
+replicaCount: 3
+
+image:
+  repository: 194453983284.dkr.ecr.ap-northeast-2.amazonaws.com/test-frontend
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+maxSurge: 34%
+maxUnavailable: 0%
+
+service:
+  type: NodePort
+  port: 80
+
+ingress:
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/load-balancer-name: fast-alb
+    alb.ingress.kubernetes.io/target-type: instance
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/subnets: subnet-08a76f98b880aee75, subnet-055730a1eef28f4cf
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:194453983284:certificate/3497f02e-c348-4ee3-a598-1fd20b239e1b
+  ingressRule:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: game2048
+                port:
+                  number: 80
+  tls:
+   - hosts:
+       - 1jo10000jo.link  # 실제 도메인으로 교체
+     secretName: game2048-acm-tls-secret  # 임의의 시크릿 이름으로 지정
+
+resources: 
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  limits:
+     cpu: 100m
+     memory: 256Mi
+  requests:
+     cpu: 100m
+     memory: 256Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 20
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector:
+  nodeType: service-2023
+
+tolerations:
+  - key: service
+    operator: "Equal"
+    value: "true"
+    effect: "NoSchedule"
+
+affinity: {}
+
+pvc:
+  name: efs-claim
+  accessModes:
+    - ReadWriteMany
+  storageClassName: aws-efs-sc
+  storage: 2Gi
