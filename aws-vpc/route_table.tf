@@ -97,7 +97,7 @@ resource "aws_route_table" "jykim-route-table-pri-sub3" {
 }
 
 
-resource "aws_route_table" "jykim-route-table-pri-sub2" {
+resource "aws_route_table" "jykim-route-table-pri-sub-db-a" {
 
   depends_on = [
     aws_vpc.jykim-vpc,
@@ -110,17 +110,17 @@ resource "aws_route_table" "jykim-route-table-pri-sub2" {
   }
 
   tags = {
-    Name = "jykim-route-table-pri-sub2"
+    Name = "jykim-route-table-pri-sub-db-a"
   }
 
   tags_all = {
-    Name = "jykim-route-table-pri-sub2"
+    Name = "jykim-route-table-pri-sub-db-a"
   }
 
   vpc_id = aws_vpc.jykim-vpc.id
 }
 
-resource "aws_route_table" "jykim-route-table-pri-sub4" {
+resource "aws_route_table" "jykim-route-table-pri-sub-db-c" {
 
   depends_on = [
     aws_vpc.jykim-vpc,
@@ -133,11 +133,11 @@ resource "aws_route_table" "jykim-route-table-pri-sub4" {
   }
 
   tags = {
-    Name = "jykim-route-table-pri-sub4"
+    Name = "jykim-route-table-pri-sub-db-c"
   }
 
   tags_all = {
-    Name = "jykim-route-table-pri-sub4"
+    Name = "jykim-route-table-pri-sub-db-c"
   }
 
   vpc_id = aws_vpc.jykim-vpc.id

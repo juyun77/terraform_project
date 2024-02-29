@@ -1,0 +1,15 @@
+aws-vpc/.idea
+aws-vpc/.swp
+aws-vpc/*.iml
+aws-vpc/.terraform
+aws-vpc/.terraform.lock.hcl
+aws-vpc/terraform.tfvars
+
+infra-repo/.idea
+infra-repo/.swp
+infra-repo/*.iml
+infra-repo/.terraform
+infra-repo/.terraform.lock.hcl
+infra-repo/terraform.tfvars
+
+.idea

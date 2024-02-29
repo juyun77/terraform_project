@@ -122,7 +122,7 @@ resource "aws_subnet" "jykim-private-subnet3" {
   availability_zone = "ap-northeast-2c"
 }
 
-resource "aws_subnet" "jykim-private-subnet2" {
+resource "aws_subnet" "jykim-private-subnet-db-a" {
 
   depends_on = [
     aws_vpc.jykim-vpc
@@ -138,12 +138,12 @@ resource "aws_subnet" "jykim-private-subnet2" {
   private_dns_hostname_type_on_launch            = "ip-name"
 
   tags = {
-    Name                                     = "jykim-private-subnet2"
+    Name                                     = "jykim-private-subnet-db-a"
     "kubernetes.io/cluster/jykim-eks-cluster" = "shared"
   }
 
   tags_all = {
-    Name                                     = "jykim-private-subnet2"
+    Name                                     = "jykim-private-subnet-db-a"
     "kubernetes.io/cluster/jykim-eks-cluster" = "shared"
   }
 
@@ -151,7 +151,7 @@ resource "aws_subnet" "jykim-private-subnet2" {
   availability_zone = "ap-northeast-2a"
 }
 
-resource "aws_subnet" "jykim-private-subnet4" {
+resource "aws_subnet" "jykim-private-subnet-db-c" {
 
   depends_on = [
     aws_vpc.jykim-vpc
@@ -167,12 +167,12 @@ resource "aws_subnet" "jykim-private-subnet4" {
   private_dns_hostname_type_on_launch            = "ip-name"
 
   tags = {
-    Name                                     = "jykim-private-subnet4"
+    Name                                     = "jykim-private-subnet-db-c"
     "kubernetes.io/cluster/jykim-eks-cluster" = "shared"
   }
 
   tags_all = {
-    Name                                     = "jykim-private-subnet4"
+    Name                                     = "jykim-private-subnet-db-c"
     "kubernetes.io/cluster/jykim-eks-cluster" = "shared"
   }
 

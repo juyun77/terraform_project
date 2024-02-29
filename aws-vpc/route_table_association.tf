@@ -23,14 +23,14 @@ resource "aws_route_table_association" "jykim-route-association-pri-sub3" {
   subnet_id      = aws_subnet.jykim-private-subnet3.id
 }
 
-resource "aws_route_table_association" "jykim-route-association-pri-sub2" {
-  route_table_id = aws_route_table.jykim-route-table-pri-sub2.id
-  subnet_id      = aws_subnet.jykim-private-subnet2.id
+resource "aws_route_table_association" "jykim-route-association-pri-sub-db-a" {
+  route_table_id = aws_route_table.jykim-route-table-pri-sub-db-a.id
+  subnet_id      = aws_subnet.jykim-private-subnet-db-a.id
 }
 
-resource "aws_route_table_association" "jykim-route-association-pri-sub4" {
-  route_table_id = aws_route_table.jykim-route-table-pri-sub4.id
-  subnet_id      = aws_subnet.jykim-private-subnet4.id
+resource "aws_route_table_association" "jykim-route-association-pri-sub-db-c" {
+  route_table_id = aws_route_table.jykim-route-table-pri-sub-db-c.id
+  subnet_id      = aws_subnet.jykim-private-subnet-db-c.id
 }
 
 
