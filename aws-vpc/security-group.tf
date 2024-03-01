@@ -28,3 +28,23 @@ resource "aws_security_group" "jykim-sg-bastion" {
     Name = "jykim-sg-bastion"
   }
 }
+
+# 데이터베이스 보안그룹
+resource "aws_security_group" "my_db_alb_sg" {
+  name        = "my-db-alb-sg"
+  description = "Database Security Group"
+  vpc_id      = aws_vpc.jykim-vpc.id
+
+  # 데이터베이스 포트에 대한 인바운드 규칙 추가
+  ingress {
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "Allow inbound traffic to the database port"
+  }
+
+  tags = {
+    Name = "my-db-alb-sg"
+  }
+}

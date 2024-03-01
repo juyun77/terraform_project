@@ -5,7 +5,7 @@ resource "aws_nat_gateway" "jykim-nat-gateway" {
   ]
 
   allocation_id     = aws_eip.jykim-elastic-ip.id
-  subnet_id         = aws_subnet.jykim-public-subnet3.id
+  subnet_id         = aws_subnet.jykim-public-subnet-c.id
   connectivity_type = "public"
 
   tags = {

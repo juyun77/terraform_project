@@ -1,7 +1,7 @@
 
 ########## Public Subnet Route Tables ########## 
 
-resource "aws_route_table" "jykim-route-table-pub-sub1" {
+resource "aws_route_table" "jykim-route-table-pub-sub-a" {
 
   depends_on = [
     aws_vpc.jykim-vpc,
@@ -14,17 +14,17 @@ resource "aws_route_table" "jykim-route-table-pub-sub1" {
   }
 
   tags = {
-    Name = "jykim-route-table-pub-sub1"
+    Name = "jykim-route-table-pub-sub-a"
   }
 
   tags_all = {
-    Name = "jykim-route-table-pub-sub1"
+    Name = "jykim-route-table-pub-sub-a"
   }
 
   vpc_id = aws_vpc.jykim-vpc.id
 }
 
-resource "aws_route_table" "jykim-route-table-pub-sub3" {
+resource "aws_route_table" "jykim-route-table-pub-sub-c" {
 
   depends_on = [
     aws_vpc.jykim-vpc,
@@ -37,11 +37,11 @@ resource "aws_route_table" "jykim-route-table-pub-sub3" {
   }
 
   tags = {
-    Name = "jykim-route-table-pub-sub3"
+    Name = "jykim-route-table-pub-sub-c"
   }
 
   tags_all = {
-    Name = "jykim-route-table-pub-sub3"
+    Name = "jykim-route-table-pub-sub-c"
   }
 
   vpc_id = aws_vpc.jykim-vpc.id
@@ -50,7 +50,7 @@ resource "aws_route_table" "jykim-route-table-pub-sub3" {
 
 ########## Private Subnet Route Tables ########## 
 
-resource "aws_route_table" "jykim-route-table-pri-sub1" {
+resource "aws_route_table" "jykim-route-table-pri-sub-a" {
 
   depends_on = [
     aws_vpc.jykim-vpc,
@@ -63,17 +63,17 @@ resource "aws_route_table" "jykim-route-table-pri-sub1" {
   }
 
   tags = {
-    Name = "jykim-route-table-pri-sub1"
+    Name = "jykim-route-table-pri-sub-a"
   }
 
   tags_all = {
-    Name = "jykim-route-table-pri-sub1"
+    Name = "jykim-route-table-pri-sub-a"
   }
 
   vpc_id = aws_vpc.jykim-vpc.id
 }
 
-resource "aws_route_table" "jykim-route-table-pri-sub3" {
+resource "aws_route_table" "jykim-route-table-pri-sub-c" {
 
   depends_on = [
     aws_vpc.jykim-vpc,
@@ -86,11 +86,11 @@ resource "aws_route_table" "jykim-route-table-pri-sub3" {
   }
 
   tags = {
-    Name = "jykim-route-table-pri-sub3"
+    Name = "jykim-route-table-pri-sub-c"
   }
 
   tags_all = {
-    Name = "jykim-route-table-pri-sub3"
+    Name = "jykim-route-table-pri-sub-c"
   }
 
   vpc_id = aws_vpc.jykim-vpc.id

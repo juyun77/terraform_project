@@ -5,7 +5,7 @@ resource "aws_instance" "jykim-ec2-bastion" {
   availability_zone           = "ap-northeast-2a"
 
   iam_instance_profile        = aws_iam_instance_profile.jykim-ec2-instance-my-profile2.name
-  key_name                    = "reca-key"
+  key_name                    = "juyunkey"
 
   capacity_reservation_specification {
     capacity_reservation_preference = "open"
@@ -36,17 +36,19 @@ resource "aws_instance" "jykim-ec2-bastion" {
 
   monitoring = "false"
 
-  root_block_device {
-    delete_on_termination = "true"
-    encrypted             = "false"
 
-    tags = {
-      Name        = "jykim-ec2-bastion-ebs"
-    }
-
-    volume_size = "8"   # 8기가 짜리 ebs 생성 
-    volume_type = "gp2"
-  }
+#ebs볼륨 생성
+#   root_block_device {
+#     delete_on_termination = "true"
+#     encrypted             = "false"
+#
+#     tags = {
+#       Name        = "jykim-ec2-bastion-ebs"
+#     }
+#
+#     volume_size = "8"   # 8기가 짜리 ebs 생성
+#     volume_type = "gp2"
+#   }
 
   source_dest_check = "true"
 
@@ -61,7 +63,7 @@ resource "aws_instance" "jykim-ec2-bastion" {
 
   tenancy       = "default"
 
-  subnet_id     = aws_subnet.jykim-public-subnet1.id
+  subnet_id     = aws_subnet.jykim-public-subnet-a.id
   vpc_security_group_ids = [aws_security_group.jykim-sg-bastion.id]
 
   
