@@ -7,7 +7,7 @@ resource "aws_subnet" "jykim-public-subnet-a" {
   ]
 
   assign_ipv6_address_on_creation                = "false"
-  cidr_block                                     = "192.168.0.0/20"
+  cidr_block                                     = "10.0.0.0/20"
   enable_dns64                                   = "false"
   enable_resource_name_dns_a_record_on_launch    = "false"
   enable_resource_name_dns_aaaa_record_on_launch = "false"
@@ -38,7 +38,7 @@ resource "aws_subnet" "jykim-public-subnet-c" {
   ]
 
   assign_ipv6_address_on_creation                = "false"
-  cidr_block                                     = "192.168.16.0/20"
+  cidr_block                                     = "10.0.16.0/20"
   enable_dns64                                   = "false"
   enable_resource_name_dns_a_record_on_launch    = "false"
   enable_resource_name_dns_aaaa_record_on_launch = "false"
@@ -71,7 +71,7 @@ resource "aws_subnet" "jykim-private-subnet-a" {
   ]
 
   assign_ipv6_address_on_creation                = "false"
-  cidr_block                                     = "192.168.32.0/20"
+  cidr_block                                     = "10.0.32.0/20"
   enable_dns64                                   = "false"
   enable_resource_name_dns_a_record_on_launch    = "false"
   enable_resource_name_dns_aaaa_record_on_launch = "false"
@@ -100,7 +100,7 @@ resource "aws_subnet" "jykim-private-subnet-c" {
   ]
 
   assign_ipv6_address_on_creation                = "false"
-  cidr_block                                     = "192.168.48.0/20"
+  cidr_block                                     = "10.0.48.0/20"
   enable_dns64                                   = "false"
   enable_resource_name_dns_a_record_on_launch    = "false"
   enable_resource_name_dns_aaaa_record_on_launch = "false"
@@ -129,7 +129,7 @@ resource "aws_subnet" "jykim-private-subnet-db-a" {
   ]
 
   assign_ipv6_address_on_creation                = "false"
-  cidr_block                                     = "192.168.64.0/20"
+  cidr_block                                     = "10.0.64.0/20"
   enable_dns64                                   = "false"
   enable_resource_name_dns_a_record_on_launch    = "false"
   enable_resource_name_dns_aaaa_record_on_launch = "false"
@@ -158,7 +158,7 @@ resource "aws_subnet" "jykim-private-subnet-db-c" {
   ]
 
   assign_ipv6_address_on_creation                = "false"
-  cidr_block                                     = "192.168.80.0/20"
+  cidr_block                                     = "10.0.80.0/20"
   enable_dns64                                   = "false"
   enable_resource_name_dns_a_record_on_launch    = "false"
   enable_resource_name_dns_aaaa_record_on_launch = "false"
